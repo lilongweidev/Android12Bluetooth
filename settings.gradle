@@ -10,8 +10,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url "https://jitpack.io" }
     }
 }
-rootProject.name = "Android12Bluetooth"
+rootProject.name = "Android12Bluetooth-Java"
 include ':app'
