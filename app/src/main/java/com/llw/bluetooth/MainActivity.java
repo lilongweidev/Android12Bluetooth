@@ -53,7 +53,14 @@ public class MainActivity extends AppCompatActivity {
         //打开蓝牙意图
         enableBluetooth = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() == Activity.RESULT_OK) {
-                showMsg(isOpenBluetooth() ? "蓝牙已打开" : "蓝牙未打开");
+                if (isOpenBluetooth()){
+                    BluetoothManager manager = (BluetoothManager) getSystemService(BLUETOOTH_SERVICE);
+                    mBluetoothAdapter = manager.getAdapter();
+                    scanner = mBluetoothAdapter.getBluetoothLeScanner();
+                    showMsg("蓝牙已打开");
+                } else {
+                    showMsg("蓝牙未打开");
+                }
             }
         });
         //请求BLUETOOTH_CONNECT权限意图
